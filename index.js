@@ -34,8 +34,19 @@ app.get("/posts", (req, res) => {
       location: "London",
     },
   ];
-  console.log(HI);
-  res.send("posts");
+  // console.log(HI);
+  // res.send("posts");
+  try {
+    res.json({
+      results: posts,
+    });
+  } catch (err) {
+    res.json({
+      status: 400,
+      msg: "Error",
+      err: err,
+    });
+  }
 });
 
 // Listen
